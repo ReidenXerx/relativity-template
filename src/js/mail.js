@@ -1,5 +1,5 @@
 import jQuery from 'jquery';
-import * as data from '../server/axiospath.json';
+//import * as data from '../server/axiospath.json';
 
 export default function Mail() {
 	jQuery(document).ready(function() {
@@ -20,7 +20,7 @@ export default function Mail() {
 
 			jQuery.ajax({
 				type: "POST",
-				url: data.path+"/sendmail",
+				url: //data.path+"/sendmail",
 				contentType: "application/json; charset=utf-8", //Change
 				data: JSON.stringify({
 	 			 text,
