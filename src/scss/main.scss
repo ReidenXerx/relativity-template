@@ -5,10 +5,9 @@
 @import "functions.scss";
 @import "mixins.scss";
 @import "modifiers.scss";
-@import "objects.scss";
 @import "effects.scss";
+@import "./objects/adaptive_header.scss";
+@import "./objects/sidebar.scss";
 
-@import "_flex-variables.scss";
-
-//current project
 @import "./current_project/index.scss";
+@import "objects.scss";

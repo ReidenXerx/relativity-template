@@ -1,22 +1,4 @@
 @import "_colors.scss";
 @import "_fonts.scss";
 
-html, body {
-			overflow-x: hidden;
-			width: 100vw;
-
-			a {
-				text-decoration: none;
-        cursor: pointer;
-			}
-
-			ul {
-				margin: 0;
-			}
-
-			li {
-				list-style: none;
-			}
-}
-
 @import "test.scss";
