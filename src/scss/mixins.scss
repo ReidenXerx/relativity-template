@@ -1,0 +1,450 @@
+
+//-adaptivity and relativity
+
+@mixin _desktop-small {
+    @media (max-width: 1700px){
+        @content;
+    }
+}
+
+@mixin _tablet-big {
+    @media (max-width: 1170px){
+        @content;
+    }
+}
+
+@mixin _tablet-middle {
+    @media (max-width: 768px){
+        @content;
+    }
+}
+
+@mixin _tablet-small {
+    @media (max-width: 600px){
+        @content;
+    }
+}
+
+@mixin _phone-big {
+    @media (max-width: 480px){
+        @content;
+    }
+}
+
+@mixin _phone-small{
+    @media (max-width: 370px){
+        @content;
+    }
+}
+
+
+//-flex
+
+@mixin SetFlexJustify ($justify_content: flex-start) {
+
+	justify-content: $justify_content;
+}
+
+@mixin SetFlexAlign ($align_items: flex-start) {
+
+	align-items: $align_items;
+}
+
+@mixin ToVertical () {
+
+	flex-direction: column;
+}
+
+@mixin ToHorizontal () {
+
+	flex-direction: row;
+}
+
+@mixin ToVertical-inverse () {
+
+	flex-direction: column-reverse;
+}
+
+@mixin ToHorizontal-inverse () {
+
+	flex-direction: row-reverse;
+}
+
+//-text
+
+@mixin SetFontFamily($font_family) {
+
+	font-family: $font_family;
+}
+
+@mixin SetFontVars($font-weight, $letter-spacing, $color, $text-transform: inherit, $text-align: inherit) {
+
+	font-weight: $font-weight;
+	letter-spacing: $letter-spacing * 1em;
+	color: $color;
+	text-transform: $text-transform;
+	text-align: $text-align;
+}
+
+@mixin SetTextAlign($text-align: inherit) {
+
+	text-align: $text-align;
+}
+
+@mixin SetFontLineSize($vmin-scaler, $vw-scaler, $rem-scaler, $font-size, $line-height, $mode: desktop-middle) {
+
+	$rem-font: ($rem-scaler * $font-size)/$font_size-global;
+	$rem-line: ($rem-scaler * ($font-size + $line-height))/$font_size-global;
+
+	$vmin-font: ($vmin-scaler * $font-size)/min(GetDeviceScreen($mode, horizontal), GetDeviceScreen($mode, vertical));
+	$vmin-line: ($vmin-scaler * ($font-size + $line-height))/min(GetDeviceScreen($mode, horizontal), GetDeviceScreen($mode, vertical));
+
+	$vw-font: ($vw-scaler * $font-size)/GetDeviceScreen($mode, horizontal);
+	$vw-line: ($vw-scaler * ($font-size + $line-height))/GetDeviceScreen($mode, horizontal);
+
+	font-size: calc(#{$rem-font} * 1rem + #{$vmin-font} * 100vmin + #{$vw-font} * 100vw);
+	line-height: calc(#{$rem-line} * 1rem + #{$vmin-line} * 100vmin + #{$vw-line} * 100vw);
+}
+
+
+//-properties
+
+@mixin SetBackground ($mode, $arg) {
+
+	@if ($mode == solid)
+	{
+		background: $arg;
+	}
+	@else if ($mode == picture)
+	{
+		background: $arg  center 100% no-repeat;
+		background-size: cover;
+	}
+}
+
+
+@mixin SetMargins ($orientation, $up-left: 0, $down-right: 0, $scaler: 1, $mode: desktop-middle) {
+
+	@if($orientation == vertical)
+	{
+		margin-top: RelativeUnits($up-left, $scaler, $mode, $orientation);
+		margin-bottom: RelativeUnits($down-right, $scaler, $mode, $orientation);
+	}
+	@else if ($orientation == horizontal)
+	{
+		margin-left: RelativeUnits($up-left, $scaler, $mode, $orientation);
+		margin-right: RelativeUnits($down-right, $scaler, $mode, $orientation);
+	}
+  @else if($orientation == both)
+  {
+    margin-top: RelativeUnits(nth($up-left, 1), $scaler, $mode, vertical);
+    margin-left: RelativeUnits(nth($up-left, 2), $scaler, $mode, horizontal);
+    margin-bottom: RelativeUnits(nth($down-right, 1), $scaler, $mode, vertical);
+    margin-right: RelativeUnits(nth($down-right, 2), $scaler, $mode, horizontal);
+  }
+}
+
+@mixin SetPaddings ($orientation, $up-left: 0, $down-right: 0, $scaler: 1, $mode: desktop-middle) {
+
+	@if($orientation == vertical)
+	{
+		padding-top: RelativeUnits($up-left, $scaler, $mode, $orientation);
+		padding-bottom: RelativeUnits($down-right, $scaler, $mode, $orientation);
+	}
+	@else if ($orientation == horizontal)
+	{
+		padding-left: RelativeUnits($up-left, $scaler, $mode, $orientation);
+		padding-right: RelativeUnits($down-right, $scaler, $mode, $orientation);
+	}
+  @else if($orientation == both)
+  {
+    padding-top: RelativeUnits(nth($up-left, 1), $scaler, $mode, vertical);
+    padding-left: RelativeUnits(nth($up-left, 2), $scaler, $mode, horizontal);
+    padding-bottom: RelativeUnits(nth($down-right, 1), $scaler, $mode, vertical);
+    padding-right: RelativeUnits(nth($down-right, 2), $scaler, $mode, horizontal);
+  }
+}
+
+@mixin SetWidth-responsive ($width, $scaler: 1, $mode: desktop-middle) {
+
+	width: RelativeUnits($width, $scaler, $mode, horizontal);
+}
+
+@mixin Grid-area ($name) {
+
+  grid-area: $name;
+}
+
+@mixin SmartGrid($width, $LIST-rows) {
+
+  $LIST-names_areas-row-map: ();
+  $LIST-exceptions-intel_stretch: ();
+  @each $row in $LIST-rows {
+
+    $LIST-names_areas: ();
+    @each $name, $width-area in $row {
+      $LIST-names_areas: append($LIST-names_areas, $name);
+    }
+    $LIST-names_areas-row-map: append($LIST-names_areas-row-map, $LIST-names_areas);
+  }
+
+  @for $indexer from 1 through length($LIST-names_areas-row-map) - 1 {
+
+    @if LIST-GetSubElement($LIST-names_areas-row-map, $indexer, 1) == LIST-GetSubElement($LIST-names_areas-row-map, $indexer + 1, 1) {
+      $LIST-exceptions-intel_stretch: append($LIST-exceptions-intel_stretch, LIST-GetSubElement($LIST-names_areas-row-map, $indexer, 1));
+    }
+    @if LIST-GetSubElement($LIST-names_areas-row-map, $indexer, -1) == LIST-GetSubElement($LIST-names_areas-row-map, $indexer + 1, -1) {
+      $LIST-exceptions-intel_stretch: append($LIST-exceptions-intel_stretch, LIST-GetSubElement($LIST-names_areas-row-map, $indexer, -1));
+    }
+  }
+
+  //интеллектуальное округление
+  $indexer-row: 1;
+  $LIST-width_area-all: ();
+  @each $row in $LIST-rows {
+
+    $width-real: 0;
+
+    $LIST-names_areas-row: ();
+    $LIST-width_area_100_ceil-row: ();
+    $width-real-CEILED: 0;
+    $indexer-area: 1;
+
+    @each $name, $width-area in $row {
+
+      $LIST-width_area_100_ceil-row: append($LIST-width_area_100_ceil-row, ceil($width-area/100) * 100);
+      $width-real: $width-real + $width-area;
+      $width-real-CEILED: $width-real-CEILED + nth($LIST-width_area_100_ceil-row, $indexer-area);
+      $LIST-names_areas-row: append($LIST-names_areas-row, $name);//каталог имен, идущих по порядку, чтоб можно было обратиться по имени в массив листареа
+      $indexer-area: $indexer-area + 1;
+    }
+    @debug $LIST-width_area_100_ceil-row;
+
+    @if $width > $width-real-CEILED or $width == $width-real-CEILED {
+
+      @for $indexer-area from 1 through length($row) {
+
+        $LIST-rows: set-nth($LIST-rows, $indexer-row, map-merge(nth($LIST-rows, $indexer-row), (nth($LIST-names_areas-row, $indexer-area):nth($LIST-width_area_100_ceil-row, $indexer-area))));
+        //$LIST-width_area-all: append($LIST-width_area-all, nth($LIST-width_area_100_ceil-row, $indexer-area));
+      }
+      @debug $LIST-rows;
+    }
+
+    @else {
+
+      $LIST-names_areas-row-width-10_ceil: ();
+      $width-real-CEILED: 0;
+      $indexer-area: 1;
+
+      @each $name, $width-area in $row {
+
+        $LIST-names_areas-row-width-10_ceil: append($LIST-width_area_100_ceil-row, ceil($width-area/10) * 10);
+        $width-real-CEILED: $width-real-CEILED + nth($LIST-names_areas-row-width-10_ceil, $indexer-area);
+        $indexer-area: $indexer-area + 1;
+      }
+      //@debug $LIST-names_areas-row-width-10_ceil;
+
+      @if $width > $width-real-CEILED or $width == $width-real-CEILED {
+
+        @for $indexer-area from 1 through length($row) {
+
+          $LIST-rows: set-nth($LIST-rows, $indexer-row, map-merge(nth($LIST-rows, $indexer-row), (nth($LIST-names_areas-row, $indexer-area):nth($LIST-names_areas-row-width-10_ceil, $indexer-area))));
+          //$LIST-width_area-all: append($LIST-width_area-all, nth($LIST-names_areas-row-width-10_ceil, $indexer-area));
+        }
+      }
+    }
+
+    $indexer-row: $indexer-row + 1; //шаг по строкам, чтоб можно было обратиться напрямую к конкретному элементу массива $LIST-rows
+  }
+
+  @debug "exceptions";
+  //создание списка исключений
+  @each $exception in $LIST-exceptions-intel_stretch {
+    $indexer-row: 1;
+    @each $row in $LIST-rows {
+      @each $name, $width-area in $row {
+        @if $name == $exception {
+          $LIST-rows: set-nth($LIST-rows, $indexer-row, map-merge(nth($LIST-rows, $indexer-row), ($name:LIST-MAP_GetSubMin-name($LIST-rows, $name))));
+        }
+      }
+      $indexer-row: $indexer-row + 1;
+    }
+  }
+  //поправка запись обновленных данных в общий список ширин всех областей
+  @each $row in $LIST-rows {
+    @each $name, $width-area in $row {
+
+      $LIST-width_area-all: append($LIST-width_area-all, $width-area);
+    }
+  }
+
+  @debug $LIST-rows;
+  $fraction: 0;
+
+  //фракционные вычисления
+  $LIST-width_area-all: append($LIST-width_area-all, $width);//список ширин областей ВО ВСЕХ строках + максимальная ширина строки В ПИКСЕЛЯХ
+  $indexer-row: 1;
+  //@debug $LIST-width_area-all;
+  @each $row in $LIST-rows {
+
+    $LIST-names_areas-row: ();//список имен всех областей в ТЕКУЩЕЙ строке
+    @each $name, $width-area in $row {
+      $LIST-names_areas-row: append($LIST-names_areas-row, $name);
+    }
+
+    $fraction: GCF($LIST-width_area-all);
+
+    $LIST-width_area-row-fr: ();//список ширин областей в ТЕКУЩЕЙ строке
+    $TOTAL_width_area-row-fr: 0;//реальная ширина ТЕКУЩЕЙ строки В ФРАКЦИЯХ
+    //расчет начального сдвига для списка
+    $index-shifter: 0;
+    $timer: $indexer-row - 1;
+    @while $timer > 0 {
+      $index-shifter: $index-shifter + length(nth($LIST-rows, $timer));
+      $timer: $timer - 1;
+    }
+
+    //расчет ширин в фракциях для областей в текущей строке + расчет реальной длины строки в фракциях
+    @for $indexer from 1 through length($row) {
+
+      $LIST-width_area-row-fr: append($LIST-width_area-row-fr, nth($LIST-width_area-all, $index-shifter + $indexer)/$fraction);
+      $TOTAL_width_area-row-fr: $TOTAL_width_area-row-fr + nth($LIST-width_area-row-fr, $indexer);
+    }
+
+    @debug LIST-width_area-row-fr $LIST-width_area-row-fr;
+
+    $max: nth($LIST-width_area-row-fr, 1);
+  	$max-index: 1;
+    $COUNTER-exception-row: 0;
+  	@for $indexer from 1 through length($LIST-width_area-row-fr) {
+  		@if $max < nth($LIST-width_area-row-fr, $indexer) and LIST-CheckInclude($LIST-exceptions-intel_stretch, nth($LIST-names_areas-row, $indexer)) == false {
+  			$max: nth($LIST-width_area-row-fr, $indexer);
+  			$max-index: $indexer;
+  		}
+      @if LIST-CheckInclude($LIST-exceptions-intel_stretch, nth($LIST-names_areas-row, $indexer)) {
+        $COUNTER-exception-row: $COUNTER-exception-row + 1;
+      }
+  	}
+    @debug counter $COUNTER-exception-row;
+
+    $REST-width_area-row: $width/$fraction - $TOTAL_width_area-row-fr;//остаток от максимальной ширины строки в ФРАКЦИЯХ
+    @debug rest $REST-width_area-row;
+    $width_area-fr-INCREMENT: $REST-width_area-row / (length($LIST-width_area-row-fr) - $COUNTER-exception-row);//среднее значение увеличения всех областей в строке для ликвидирования остатка В ФРАКЦИЯХ
+    @debug increment $width_area-fr-INCREMENT;
+
+    //intelligence stretcher
+    $indexer: 1;
+    @while $REST-width_area-row > 0 {
+
+      @if $indexer == $max-index {
+        $LIST-width_area-row-fr: set-nth($LIST-width_area-row-fr, $indexer, nth($LIST-width_area-row-fr, $indexer) + ceil($width_area-fr-INCREMENT));
+        $REST-width_area-row: $REST-width_area-row - ceil($width_area-fr-INCREMENT);
+      }
+      @else if LIST-CheckInclude($LIST-exceptions-intel_stretch, nth($LIST-names_areas-row, $indexer)) == false {
+        $LIST-width_area-row-fr: set-nth($LIST-width_area-row-fr, $indexer, nth($LIST-width_area-row-fr, $indexer) + floor($width_area-fr-INCREMENT));
+        $REST-width_area-row: $REST-width_area-row - floor($width_area-fr-INCREMENT);
+      }
+      $indexer: $indexer + 1;
+    }
+
+    @debug LIST-width_area-row-fr-increased $LIST-width_area-row-fr;
+
+    @for $indexer-area from 1 through length($row) {
+      $LIST-rows: set-nth($LIST-rows, $indexer-row, map-merge(nth($LIST-rows, $indexer-row), (nth($LIST-names_areas-row, $indexer-area):nth($LIST-width_area-row-fr, $indexer-area))));
+    }
+
+    $indexer-row: $indexer-row + 1
+  }
+
+  @debug $LIST-rows;
+
+  //формирование финальной строки
+  $width_row-fr: $width/$fraction;
+  grid-template-columns: repeat($width_row-fr, 1fr);
+  grid-template-rows: auto;
+  $STRING-name_area-all: "";
+  $LIST-name_area-all: ();
+  @debug $STRING-name_area-all;
+  @each $row in $LIST-rows {
+
+    $indexer-area: 1;
+    $STRING-name_area-all: "";
+    @each $name, $width_area-fr in $row {
+      @for $indexer from 1 through $width_area-fr {
+
+        $STRING-name_area-all: $STRING-name_area-all + $name;
+        @if $indexer-area != length($row) {
+          $STRING-name_area-all: $STRING-name_area-all + " ";
+        }
+        @else {
+          @if $indexer != $width_area-fr {
+            $STRING-name_area-all: $STRING-name_area-all + " ";
+          }
+        }
+      }
+      $indexer-area: $indexer-area + 1;
+    }
+    $LIST-name_area-all: append($LIST-name_area-all, BracketFunction($STRING-name_area-all));
+    @debug stringlocal BracketFunction($STRING-name_area-all);
+
+  }
+  @debug listarea $LIST-name_area-all;
+
+  $STRING-grid: "";
+  @for $indexer from 1 through length($LIST-name_area-all) {
+    $STRING-grid: $STRING-grid + nth($LIST-name_area-all, $indexer);
+  }
+  @debug $STRING-grid;
+  grid-template-areas:
+    #{$STRING-grid};
+}
+
+@mixin StandartArguments($arguments) {
+
+  @if map-has-key($arguments, "box-shadow") {
+    box-shadow: map-get($arguments, "box-shadow");
+  }
+  @if map-has-key($arguments, "color") {
+    color: map-get($arguments, "color");
+  }
+  @if map-has-key($arguments, "static-content") {
+    content: map-get($arguments, "static-content");
+  }
+  @if map-has-key($arguments, "background-color") {
+    background-color: map-get($arguments, "background-color");
+  }
+  @if map-has-key($arguments, "background") {
+    background: map-get($arguments, "background") center 100% no-repeat;
+		background-size: cover;
+  }
+  @if map-has-key($arguments, "border-radius") {
+    border-radius: map-get($arguments, "border-radius");
+  }
+}
+
+//-transforms
+
+@mixin TransformXY ($OffsetX, $OffsetY, $scaler: 1, $mode: desktop-middle) {
+
+	transform: translate(RelativeUnits(horizontal, $OffsetX, $scaler, $mode), RelativeUnits(vertical, $OffsetY, $scaler, $mode));
+	-moz-transform: translate(RelativeUnits(horizontal, $OffsetX, $scaler, $mode), RelativeUnits(vertical, $OffsetY, $scaler, $mode)); /* Firefox 3.5+ */
+	-webkit-transform: translate(RelativeUnits(horizontal, $OffsetX, $scaler, $mode), RelativeUnits(vertical, $OffsetY, $scaler, $mode)); /* Safari 3.1+ и Chrome 2.0+ */
+	-o-transform: translate(RelativeUnits(horizontal, $OffsetX, $scaler, $mode), RelativeUnits(vertical, $OffsetY, $scaler, $mode)); /* Opera 10.5+ */
+	-ms-transform: translate(RelativeUnits(horizontal, $OffsetX, $scaler, $mode), RelativeUnits(vertical, $OffsetY, $scaler, $mode)); /* IE 9.0 */
+}
+
+@mixin TransformScale ($ScaleX: 1, $ScaleY: 1) {
+	transform: scale($ScaleX, $ScaleY);
+	-moz-transform: scale($ScaleX, $ScaleY); /* Firefox 3.5+ */
+	-webkit-transform: scale($ScaleX, $ScaleY); /* Safari 3.1+ и Chrome 2.0+ */
+	-o-transform: scale($ScaleX, $ScaleY); /* Opera 10.5+ */
+	-ms-transform: scale($ScaleX, $ScaleY); /* IE 9.0 */
+}
+
+@mixin TransformRotate ($Rotate) {
+	transform: rotate($Rotate);
+	-moz-transform: rotate($Rotate); /* Firefox 3.5+ */
+	-webkit-transform: rotate($Rotate); /* Safari 3.1+ и Chrome 2.0+ */
+	-o-transform: rotate($Rotate); /* Opera 10.5+ */
+	-ms-transform: rotate($Rotate); /* IE 9.0 */
+}

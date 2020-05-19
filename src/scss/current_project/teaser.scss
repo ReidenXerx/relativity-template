@@ -1,0 +1,75 @@
+
+.teaser-section {
+  background: url(../img/utp.png) no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  height: 120vh;
+
+  .info-container {
+    height: 100vh;
+    overflow: hidden;
+    @include SetWidth-responsive(1330);
+    ul {
+      height: 400px;
+      min-width: 300%;
+    }
+
+    .item {
+      @include SetWidth-responsive(1330);
+      height: 100%;
+      transition: 0.6s;
+      &:first-child {
+        //margin-left: RelativeUnits(-1330, 1, desktop-middle, horizontal);
+      }
+    }
+
+    .info-text {
+      width: 50%;
+      h2 {
+        @include SetFontLineSize(0.33, 0.33, 0.34, 80, 16);
+        @include SetFontVars(500, 0.0, $white, none);
+        margin-bottom: RelativeUnits(50, 0.7, desktop-middle, horizontal);
+      }
+      p {
+        @include SetFontLineSize(0.2, 0.2, 0.6, 16, 16);
+        @include SetFontVars(500, 0.0, $purple, none);
+        margin-bottom: RelativeUnits(50, 0.7, desktop-middle, horizontal);
+      }
+      .utp-button {
+        font-size: 16px;
+        width: 257px;
+        height: 66px;
+        border-radius: 33px;
+        margin-left: 10px;
+      }
+    }
+
+    .info-img {
+      width: 50%;
+      padding-left: RelativeUnits(250, 1, desktop-middle, horizontal);
+    }
+    @include _tablet-small {
+      .info-img { display: none; }
+      .info-text { width: 80vw; }
+    }
+  }
+
+  .carousel-nav {
+    width: 175px;
+    margin-top: -15vh;
+    .circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: $white;
+      cursor: pointer;
+    }
+    .green {
+      background: $green;
+    }
+    i {
+      color: $white;
+      cursor: pointer;
+    }
+  }
+}

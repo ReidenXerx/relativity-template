@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/b25b27174b.js" crossorigin="anonymous"></script>
+
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    <link rel="stylesheet" href="css/style.bundle.css">
+
+    <title>Framework Vanilla</title>
+
+    <script>(function (w,d,s,o,f,js,fjs){w['BookformObject']=o;w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};js=d.createElement(s),fjs=d.getElementsByTagName(s)[0];js.id=o;js.src=f;js.async=1;fjs.parentNode.insertBefore(js,fjs);}(window,document,'script','Bookform','https://widget.bookform.ru/25515/js'));Bookform('floatingButton',{id:25515});</script>
+  </head>
+
+  <body>
+
+    <header class="header flex j-c-center">
+      <div class="header-content flex j-c-s-between a-i-center">
+
+        <div class="logo-tag flex a-i-center">
+          <a href="#teaser" id="list">
+            <img src="img/logo.png" alt="">
+          </a>
+        </div>
+
+        <div class="flex j-c-s-between a-i-center menu">
+          <ul class="flex j-c-s-between">
+            <li><a href="#our-services" id="list"> о нас </a></li>
+            <li><a href="#sleep" id="list"> как это работает </a></li>
+            <li><a href="#team" id="list"> команда </a></li>
+            <li><a href="#contact" id="list"> связаться </a></li>
+          </ul>
+          <a href="articles.html" class="button" id="href"> F.A.Q </a>
+        </div>
+
+        <i class="fas fa-bars hamburger"></i>
+
+      </div>
+    </header>
+
+    <section id="teaser" class="teaser-section flex f-d-column a-i-center">
+
+      <div class="info-container a-i-center flex" id="slider">
+
+        <ul class="flex">
+
+          <li class="item flex" id="1">
+            <div class="info-text">
+              <h2>Более 50 лет практики</h2>
+              <div class="flex">
+                <p>Наш опыт - ваша защита</p>
+              </div>
+              <a href="#our-services" id="list" class="button utp-button"> нужна помощь </a>
+            </div>
+            <div class="info-img">
+              <img src="img/clock-regular.svg" alt="">
+            </div>
+          </li>
+
+          <li class="item flex" id="2">
+            <div class="info-text">
+              <h2>Опытные адвокаты и юристы</h2>
+              <div class="flex">
+                <p>Дипломированные специалисты</p>
+              </div>
+              <a href="#our-services" id="list" class="button utp-button"> нужна помощь </a>
+            </div>
+            <div class="info-img">
+              <img src="img/university-solid.svg" alt="">
+            </div>
+          </li>
+
+          <li class="item flex" id="3">
+            <div class="info-text">
+              <h2>Найдем выход из любой ситуации</h2>
+              <div class="flex">
+                <p>Гарантируем!</p>
+              </div>
+              <a href="#our-services" id="list" class="button utp-button"> нужна помощь </a>
+            </div>
+            <div class="info-img">
+              <img src="img/gavel-solid.svg" alt="">
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="carousel-nav flex j-c-s-between a-i-center">
+
+        <i class="fas fa-chevron-left control_prev"></i>
+        <div class="circle green" id="c1"></div>
+        <div class="circle" id="c2"></div>
+        <div class="circle" id="c3"></div>
+        <i class="fas fa-chevron-right control_next"></i>
+
+      </div>
+
+    </section>
+
+    <section id="contact" class="contact-section flex f-d-column a-i-center">
+
+      <div class="title flex f-d-column">
+        <div class="flex a-i-center">
+        <i class="fas fa-paper-plane"></i><h2>напишите</h2>
+        </div>
+        <h3>мы вам поможем</h3>
+      </div>
+
+      <form class="callback-form-custom flex f-d-column"
+      id="mailform" method="POST" enctype="multipart/form-data">
+        <!-- Hidden Required Fields -->
+          <input type="hidden" name="project_name" value="Site Name">
+          <input type="hidden" name="admin_email" value="denielolivo982@gmail.com">
+          <input type="hidden" name="form_subject" value="Form Subject">
+          <!-- END Hidden Required Fields -->
+
+          <div class="input-box flex a-i-center">
+            <textarea rows="5" name="text" required="required" name="message" placeholder="Опишите Вашу проблему"></textarea>
+            <i class="fas fa-comment-alt"></i>
+          </div>
+
+          <div class="input-box flex  a-i-center">
+            <input type="text" id="email" name="email" required="required" placeholder="Введите ваш E-mail">
+            <i class="fas fa-envelope-square"></i>
+          </div>
+
+          <div class="input-box flex  a-i-center">
+            <input type="text" id="phone" name="phone" required="required" placeholder="Введите ваш телефон">
+            <i class="fas fa-phone-square"></i>
+          </div>
+
+          <div class="file-box flex j-c-s-between">
+            <!-- <input id="file-input" type="file" name="file" multiple>
+            <label for="file-input"><i class="fas fa-paperclip"></i></label> -->
+            <input type="date" id="date-input" min="2000-01-01" name="date">
+            <label for="date-input"><i class="fas fa-clock"></i></label>
+            <!-- <div class="clock"><i class="fas fa-clock"></i></div> -->
+            <select class="" name="selected">
+              <option value="all" disabled selected>Выберите способ консультации</option>
+      				<option value="по телефону">по телефону</option>
+              <option value="Telegram">Telegram</option>
+              <option value="Whatsapp">Whatsapp</option>
+            </select>
+          </div>
+
+        <button type="submit" class="button">Oтправить</button>
+
+      </form>
+
+    </section>
+
+    <div class="submit-message">
+      Сообщение отправлено!
+    </div>
+
+  </body>
+
+  <script src="js/bundle.js"></script>
+</html>

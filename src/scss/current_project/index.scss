@@ -1,0 +1,82 @@
+@import "_colors.scss";
+@import "_fonts.scss";
+
+$roboto: 'Roboto', sans-serif;
+$neosans: "Neo Sans Pro", sans-serif;
+
+html, body {
+	    font-family: $roboto;
+			overflow-x: hidden;
+			width: 100vw;
+      background: #ffffff;
+
+			a {
+				text-decoration: none;
+        cursor: pointer;
+			}
+
+			ul {
+				margin: 0;
+			}
+
+			li {
+				list-style: none;
+			}
+      h2, h3, h4 {
+        font-family: $neosans;
+        font-weight: 500;
+      }
+      p, h2, h3, h4  {
+        color: $black;
+      }
+      p {
+        @include SetFontLineSize(0.1, 0.1, 0.8, 14, 10);
+        letter-spacing: 1px;
+      }
+      h2 {
+        //font-size: 48px;
+        text-transform: uppercase;
+        @include SetFontLineSize(0.2, 0.2, 0.6, 48, 8);
+      }
+      h3 {
+        //font-size: 18px;
+        @include SetFontLineSize(0.2, 0.2, 0.6, 18, 8);
+        color: #c1c1c1;
+        margin-bottom: 20px;
+      }
+}
+.button {
+  height: 50px;
+  width: 185px;
+  border-radius: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: flex;
+	justify-content: center;
+	align-items: center;
+  background: $green;
+  color: $white;
+  font-size: 12px;
+  -webkit-box-shadow: 0px 0px 6px 3px rgba(75,255,179,0.21);
+  -moz-box-shadow: 0px 0px 6px 3px rgba(75,255,179,0.21);
+  box-shadow: 0px 0px 6px 3px rgba(75,255,179,0.21);
+}
+.submit-message {
+	position: fixed;
+	right: 0;
+	top: 0;
+	padding: 20px 30px;
+	@include SetFontLineSize(0.2, 0.2, 0.6, 18, 8);
+	font-weight: 600;
+	font-family: $roboto;
+	background: $blue;
+	color: $white;
+	z-index: 9999999;
+	border-radius: 0 0 0 30px;
+	transition: 0;
+}
+@import "header.scss"; // DONE
+////////////TEASER/////////////////////////////////////////////////////////////
+@import "teaser.scss"; //DONE
+//////////CONTACT//////////////////////////////////////////////////////////////
+@import "contact.scss"; // DONE
