@@ -21,14 +21,20 @@ function parallax(event) {
       var top = viewportOffset.top
       var h = document.documentElement.clientHeight
       var percent = (h - top)/h;
-      element.style.background = "rgba(" +
+      var red = s_color.r > e_color.r ? s_color.r - Math.abs(s_color.r - e_color.r) * percent : s_color.r + Math.abs(s_color.r - e_color.r) * percent
+      var green = s_color.g > e_color.g ? s_color.g - Math.abs(s_color.g - e_color.g) * percent : s_color.g + Math.abs(s_color.g - e_color.g) * percent
+      var blue = s_color.b > e_color.b ? s_color.b - Math.abs(s_color.b - e_color.b) * percent : s_color.b + Math.abs(s_color.b - e_color.b) * percent
 
-      s_color.r > e_color.r ? s_color.r - Math.abs(s_color.r - e_color.r) * percent : s_color.r + Math.abs(s_color.r - e_color.r) * percent + ", " +
-
-      s_color.g > e_color.g ? s_color.g - Math.abs(s_color.g - e_color.g) * percent : s_color.g + Math.abs(s_color.g - e_color.g) * percent + ", " +
-
-      s_color.b > e_color.b ? s_color.b - Math.abs(s_color.b - e_color.b) * percent : s_color.b + Math.abs(s_color.b - e_color.b) * percent + ", "
-       + percent + ")"
+      element.style.background = "rgba("+red+","+green+","+blue+")"
+      console.log(element.style.background)
+      // element.style.background = "rgba(" +
+      //
+      // s_color.r > e_color.r ? s_color.r - Math.abs(s_color.r - e_color.r) * percent : s_color.r + Math.abs(s_color.r - e_color.r) * percent + ", " +
+      //
+      // s_color.g > e_color.g ? s_color.g - Math.abs(s_color.g - e_color.g) * percent : s_color.g + Math.abs(s_color.g - e_color.g) * percent + ", " +
+      //
+      // s_color.b > e_color.b ? s_color.b - Math.abs(s_color.b - e_color.b) * percent : s_color.b + Math.abs(s_color.b - e_color.b) * percent + ", "
+      //  + percent + ")"
 
        console.log(s_color.r - Math.abs(s_color.r - e_color.r) * percent);
        console.log("rgba(" +
