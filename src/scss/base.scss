@@ -29,32 +29,6 @@ input[type=radio], input[type=checkbox] {
     display:none;
 }
 
-//-screens
-.main_screen {
-	display: flex;
-	width: 100%;
-	min-height: 100vh;
-}
-
-
-//-containers
-.main_container-horizontal {
-	display: flex;
-	flex-direction: row;
-	margin: 0 auto;
-}
-
-.main_container-vertical {
-	display: flex;
-	flex-direction: column;
-	margin: 0 auto;
-}
-
-.main_container-grid {
-  display: grid;
-
-
-}
 
 
 //-elements

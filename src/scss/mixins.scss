@@ -64,8 +64,23 @@
 }
 
 @mixin width($width, $scaler: 1, $mode: desktop-middle) {
-
 	width: RelativeUnits($width, $scaler, $mode, horizontal);
+}
+
+@mixin min-width($min-width, $scaler: 1, $mode: desktop-middle) {
+  min-width: RelativeUnits($min-width, $scaler, $mode, horizontal);
+}
+
+@mixin max-width($max-width, $scaler: 1, $mode: desktop-middle) {
+  max-width: RelativeUnits($max-width, $scaler, $mode, horizontal);
+}
+
+@mixin min-height($min-height, $scaler: 1, $mode: desktop-middle) {
+  min-height: RelativeUnits($min-height, $scaler, $mode, horizontal);
+}
+
+@mixin max-height($max-height, $scaler: 1, $mode: desktop-middle) {
+  max-height: RelativeUnits($max-height, $scaler, $mode, horizontal);
 }
 
 //cssgrids
