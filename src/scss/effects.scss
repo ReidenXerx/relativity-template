@@ -6,9 +6,9 @@
     transform: translate(-50%, -50%);
     pointer-events: none;
     border-radius: 50%;
-    animation: animate 1s linear infinite;
+    animation: ripple 1s linear infinite;
   }
-  @keyframes animate {
+  @keyframes ripple {
     0% {
       width: 0px;
       height: 0px;
@@ -20,4 +20,41 @@
       opacity: 0;
     }
   }
+}
+
+.hover-blup:hover {
+  @keyframes blup {
+    1% {
+      border-radius: 50%;
+    }
+    25% {
+      background: $green;
+    }
+    100% {
+      border-radius: 0%;
+      background: $green;
+    }
+  }
+
+  @-webkit-keyframes blup {
+    1% {
+      border-radius: 20%;
+    }
+    25% {
+      background: $green;
+    }
+    100% {
+      border-radius: 0%;
+      background: $green;
+    }
+  }
+   animation-name: blup;
+   animation-timing-function: ease-in-out;
+   animation-duration: 1s;
+   animation-fill-mode: forwards;
+
+   -webkit-animation-name: blup;
+   -webkit-animation-timing-function: ease-in-out;
+   -webkit-animation-duration: 1s;
+   -webkit-animation-fill-mode: forwards;
 }
