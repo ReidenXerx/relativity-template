@@ -50,8 +50,7 @@ function parallax(event) {
 }
 */
 
-export default function Parallax() {
+
   document.addEventListener("DOMContentLoaded", function(event) {
     document.addEventListener('scroll', parallax)
   })
-}

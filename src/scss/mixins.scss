@@ -45,6 +45,7 @@
 	$rem-line: ($rem-scaler * ($font-size + $line-height))/$font_size-global;
 
 	$vmin-font: ($vmin-scaler * $font-size)/min(GetDeviceScreen($mode, horizontal), GetDeviceScreen($mode, vertical));
+  @debug 'min ' + min(GetDeviceScreen($mode, horizontal), GetDeviceScreen($mode, vertical));
 	$vmin-line: ($vmin-scaler * ($font-size + $line-height))/min(GetDeviceScreen($mode, horizontal), GetDeviceScreen($mode, vertical));
 
 	$vw-font: ($vw-scaler * $font-size)/GetDeviceScreen($mode, horizontal);
