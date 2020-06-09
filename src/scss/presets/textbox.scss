@@ -5,6 +5,7 @@
     background: transparent;
     color: $color;
     border-bottom: $border solid $border-color;
+    cursor: pointer;
     @content;
   }
   .textbox-carcass::placeholder {
@@ -19,6 +20,7 @@
     background: $bg-color;
     color: $color;
     border-radius: RelativeUnits($border-radius, 0.5);
+    cursor: pointer;
     @content;
   }
   .textbox-carcass::placeholder {

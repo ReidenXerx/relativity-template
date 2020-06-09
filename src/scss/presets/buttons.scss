@@ -9,6 +9,7 @@
     border-radius: $border-radius;
     background: transparent;
     text-align: center;
+    cursor: pointer;
     @content;
   }
 }
@@ -23,6 +24,7 @@
     border-radius: $border-radius;
     background: $bg-color;
     text-align: center;
+    cursor: pointer;
     @content;
   }
 }
