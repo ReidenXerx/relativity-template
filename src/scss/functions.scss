@@ -1,6 +1,6 @@
 //-calculates
 
-@function RelativeUnits($object, $scaler, $mode: desktop-middle, $orientation: horizontal) {
+@function RelativeUnits($object, $scaler: 1, $mode: desktop-middle, $orientation: horizontal) {
 
 	@if ($orientation == vertical) {
 		@return calc(#{$scaler * $object/GetDeviceScreen($mode, $orientation)} * 100vh + #{(1 - $scaler) * $object * 1px});
@@ -10,7 +10,7 @@
 	}
 }
 
-@function RelativeUnitsComplex($object, $scaler, $vertical-scaler, $mode: desktop-middle) {
+@function RelativeUnitsComplex($object, $scaler: 1, $vertical-scaler: 0.2, $mode: desktop-middle) {
 	@return calc(#{$scaler * (1 - $vertical-scaler) * $object/GetDeviceScreen($mode, horizontal)} * 100vw + #{$scaler * $vertical-scaler * $object/GetDeviceScreen($mode, vertical)} * 100vh + #{(1 - ($scaler + $vertical-scaler)) * $object * 1px});
 }
 
@@ -128,4 +128,13 @@
 		}
 	}
 	@return $result;
+}
+
+@function ARRAY-CheckInclude($array, $index) {
+	@if nth($array, $index) {
+		@return true;
+	}
+	@else {
+		@return false;
+	}
 }

@@ -84,6 +84,97 @@
   max-height: RelativeUnits($max-height, $scaler, $mode, horizontal);
 }
 
+@mixin margin-padding($LIST-margin-padding) { //"m-r": (120, 0.5), "p-t": 320
+  @each $name-property, $value-property in $LIST-margin-padding {
+
+//margins
+    @if $name-property == 'm-t' {
+      @if length($value-property) > 1 {
+        margin-top: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+      }
+      @else {
+        margin-top: RelativeUnits(nth($value-property, 1));
+      }
+    }
+
+    @if $name-property == 'm-b' {
+      @if length($value-property) > 1 {
+        margin-bottom: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+      }
+      @else {
+        margin-bottom: RelativeUnits(nth($value-property, 1));
+      }
+    }
+
+    @if $name-property == 'm-l' {
+      @if length($value-property) > 1 {
+        margin-left: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+      }
+      @else {
+        margin-left: RelativeUnits(nth($value-property, 1));
+      }
+    }
+
+    @if $name-property == 'm-r' {
+      @if length($value-property) > 1 {
+        margin-left: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+      }
+      @else {
+        margin-left: RelativeUnits(nth($value-property, 1));
+      }
+    }
+
+//paddings
+    @if $name-property == 'p-t' {
+      @if length($value-property) > 1 {
+        padding-top: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+      }
+      @else {
+        padding-top: RelativeUnits(nth($value-property, 1));
+      }
+    }
+
+    @if $name-property == 'p-b' {
+      @if length($value-property) > 1 {
+        padding-bottom: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+      }
+      @else {
+        padding-bottom: RelativeUnits(nth($value-property, 1));
+      }
+    }
+
+    @if $name-property == 'p-l' {
+      @if length($value-property) > 1 {
+        padding-left: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+      }
+      @else {
+        padding-left: RelativeUnits(nth($value-property, 1));
+      }
+    }
+
+    @if $name-property == 'p-r' {
+      @if length($value-property) > 1 {
+        padding-left: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+      }
+      @else {
+        padding-left: RelativeUnits(nth($value-property, 1));
+      }
+    }
+  }
+}
+
+@mixin first-elements($first:1) {
+  *:nth-child(-n+#{$first)}) {
+    @content;
+  }
+}
+
+@mixin last-elements($last:1) {
+  *:nth-last-child(-n+#{$last)}) {
+    @content;
+  }
+}
+
 //cssgrids
 
 @mixin SmartGrid($width, $LIST-rows) {

@@ -18,7 +18,7 @@ html, body {
 				list-style: none;
 			}
       p, h2, h3, h4  {
-        color: $black;
+        color: #c1c1c1;
       }
       p {
         @include FontLineSize(0.1, 0.1, 0.8, 14, 10);
@@ -27,14 +27,10 @@ html, body {
       h2 {
         //font-size: 48px;
         text-transform: uppercase;
-        @include FontLineSize(0.2, 0.2, 0.6, 48, 8);
+        @include FontLineSize(0.2, 0.2, 0.6, 48, 1);
+				vertical-align: bottom;
       }
-      h3 {
-        //font-size: 18px;
-        @include FontLineSize(0.2, 0.2, 0.6, 18, 8);
-        color: #c1c1c1;
-        margin-bottom: 20px;
-      }
+
 }
 #first {
 
@@ -124,5 +120,16 @@ html, body {
 		@include width(200, 0.5);
 		padding-bottom: RelativeUnits(50, 0.5);
 		padding-top: RelativeUnits(50, 0.5);
+	}
+}
+
+#constructions { @include CONFIGURE-c-MAIN-c(500) {
+		.red {
+			background-color: red;
+			@include margin-padding(('p-t': (50 0.5), 'p-b': 50));
+		}
+		.green {
+			background-color: green;
+		}
 	}
 }

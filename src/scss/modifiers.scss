@@ -179,20 +179,14 @@
 	flex-direction: row;
 }
 
-.-column-inverse {
+.-column-r {
 	display: flex;
 	flex-direction: column-reverse;
 }
 
-.-row-inverse {
+.-row-r {
 	display: flex;
 	flex-direction: row-reverse;
-}
-
-.container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .-wrap {
@@ -280,26 +274,26 @@
 }
 
 @for $i from 1 to 10 {
-	.f-grow-#{$i} {
+	.-grow-#{$i} {
 		flex-grow: #{$i};
 	}
 }
 
 @for $i from 1 to 10 {
-	.f-shrink-#{$i} {
+	.-shrink-#{$i} {
 		flex-shrink: #{$i};
 	}
 }
 
 //-width
 
-.mw-fit-content {
-	min-width: fit-content;
+.w-fit-content {
+	width: fit-content;
 }
 
 @for $i from 1 to 100 {
 	.w-#{$i} {
-		width: #{$i} * 1%;
+		width: calc(#{$i} * 1%);
 	}
 }
 
@@ -318,7 +312,7 @@
 }
 
 .-text-j {
-	text-align: center;
+	text-align: justify;
 }
 
 .-upper {
@@ -367,24 +361,24 @@
 
 @for $i from 1 to 50 {
 	.bot-#{$i} {
-		bottom: #{$i} * 1%;
+		bottom: calc(#{$i} * 1%);
 	}
 }
 
 @for $i from 1 to 50 {
 	.top-#{$i} {
-		top: #{$i} * 1%;
+		top: calc(#{$i} * 1%);
 	}
 }
 
 @for $i from 1 to 50 {
 	.left-#{$i} {
-		left: #{$i} * 1%;
+		left: calc(#{$i} * 1%);
 	}
 }
 
 @for $i from 1 to 50 {
 	.right-#{$i} {
-		right: #{$i} * 1%;
+		right: calc(#{$i} * 1%);
 	}
 }

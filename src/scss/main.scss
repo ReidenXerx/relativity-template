@@ -10,13 +10,20 @@
 @import "functions.scss";
 @import "mixins.scss";
 @import "modifiers.scss";
-@import "effects.scss";
+
+//effects
+@import "./effects/animations.scss";
+@import "./effects/effects-objects.scss";
+@import "./effects/handlers.scss";
 
 
-//objects
+//presets
 @import "./presets/base.scss";
 @import "./presets/textbox.scss";
 @import "./presets/buttons.scss";
+@import "./presets/constructs.scss";
+
+//objects
 @import "./objects/adaptive_header.scss";
 @import "./objects/sidebar.scss";
 
