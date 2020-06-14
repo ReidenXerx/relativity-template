@@ -87,7 +87,7 @@
 @mixin margin-padding($LIST-margin-padding) { //"m-r": (120, 0.5), "p-t": 320
   @each $name-property, $value-property in $LIST-margin-padding {
 
-//margins
+  //margins
     @if $name-property == 'm-t' {
       @if length($value-property) > 1 {
         margin-top: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
@@ -124,7 +124,7 @@
       }
     }
 
-//paddings
+  //paddings
     @if $name-property == 'p-t' {
       @if length($value-property) > 1 {
         padding-top: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
