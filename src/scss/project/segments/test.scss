@@ -133,3 +133,14 @@ html, body {
 		}
 	}
 }
+
+#mihail-test {
+	.mihail {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: blue;
+		width: 200px;
+		height: 100px;
+	}
+}
