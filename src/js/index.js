@@ -1,4 +1,5 @@
 import jQuery from 'jquery';
 require('./objects/header.js');
-require('./effects/parallax.js');
-require('./effects/ripple.js');
+require('./animations/parallax.js');
+require('./animations/ripple.js');
+require('./animations/handlers.js');

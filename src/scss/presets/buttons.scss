@@ -1,4 +1,4 @@
-@mixin CONFIGURE-button-carcass($color, $border, $border-color, $border-radius) {
+@mixin CONFIGURE-e-button-carcass($color, $border, $border-color, $border-radius) {
   .button-carcass {
     display: flex;
     position: relative;
@@ -14,7 +14,7 @@
   }
 }
 
-@mixin CONFIGURE-button-regular($color, $bg-color, $border-radius) {
+@mixin CONFIGURE-e-button-regular($color, $bg-color, $border-radius) {
   .button-regular {
     display: flex;
     position: relative;

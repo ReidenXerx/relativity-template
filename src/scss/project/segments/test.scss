@@ -112,11 +112,11 @@ html, body {
 }
 
 #buttons {
-	@include CONFIGURE-textbox-carcass(red, 2px, white, blue) {
+	@include CONFIGURE-e-textbox-carcass(red, 2px, white, blue) {
 		margin-bottom: RelativeUnits(100, 0.5);
 	}
 
-	@include CONFIGURE-button-regular($black, red, 10px) {
+	@include CONFIGURE-e-button-regular($black, red, 10px) {
 		@include width(200, 0.5);
 		padding-bottom: RelativeUnits(50, 0.5);
 		padding-top: RelativeUnits(50, 0.5);

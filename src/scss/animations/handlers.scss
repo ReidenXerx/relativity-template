@@ -1,4 +1,4 @@
-@mixin hover($animation-name, $timing-function, $duration:1s, $fill-mode:forwards) {
+@mixin hover($animation-name, $timing-function: $easeOutSine, $duration:1s, $fill-mode:forwards) {
   :hover {
     animation-name: $animation-name;
     animation-timing-function: $timing-function;
@@ -16,7 +16,7 @@
   }
 }
 
-@mixin animation-handler($state-name, $animation-name, $timing-function, $duration:1s, $fill-mode:forwards) {
+@mixin animation-handler($state-name, $animation-name, $timing-function: $easeOutSine, $duration:1s, $fill-mode:forwards) {
   .#{$state-name} {
     animation-name: $animation-name;
     animation-timing-function: $timing-function;

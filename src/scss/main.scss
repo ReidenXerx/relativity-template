@@ -11,10 +11,11 @@
 @import "mixins.scss";
 @import "modifiers.scss";
 
-//effects
-@import "./effects/animations.scss";
-@import "./effects/effects-objects.scss";
-@import "./effects/handlers.scss";
+//animations
+@import "./animations/animations.scss";
+@import "./animations/animation-objects.scss";
+@import "./animations/handlers.scss";
+@import "./animations/animations-binds.scss";
 
 
 //presets
