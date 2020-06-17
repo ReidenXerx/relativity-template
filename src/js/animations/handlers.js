@@ -1,17 +1,17 @@
 //import animations_binds from './scss/animations/animations-binds.scss';
 //console.log(animations_binds.animations_parametrs);
 
-var all_classes = '.mihail';
-var animations_list;//animations attributes
+//var all_classes = '.mihail';
+//var animations_list;//animations attributes
 
 //animations_binds.animations_parametrs.forEach(item => {
   //animations_list initialize
   //all_classes = all_classes + 'penis';
 //});
 
-var eventType = 'click'
-var all_objects = document.querySelectorAll(all_classes)
-all_objects.forEach(item => {
+//var eventType = 'click'
+//var all_objects = document.querySelectorAll(all_classes)
+//all_objects.forEach(item => {
   //map.get(animations_list, item).get('animation-name')
   //поставить массив анимаций в ряд, если их несколько. Анимации будут идти в массиве
 
@@ -30,40 +30,61 @@ all_objects.forEach(item => {
   //     event.currentTarget.style.background = 'blue'
   //   }
   // }
-})
+//})
 
 var animationsList = [
+// {
+//   className: 'red',
+//   animationType: 'hover',
+//   animationName: 'blup'
+// },
 {
-  className: 'red',
-  animationType: 'hover',
-  animationName: 'blup'
-},
-{
-  className: 'red',
+  className: '.mihail',
   animationType: 'click',
-  animationName: 'blup'
+  animationName: 'Ripple'
 }
 ]
 
-function Ripple(e) {
-  e.currentTarget.style.overflow = 'hidden'
-  e.currentTarget.style.position = 'relative'
-  let rect = e.currentTarget.getBoundingClientRect()
-  let x = e.clientX - rect.x
-  let y = e.clientY - rect.y
-  let ripples = document.createElement('div')
-  ripples.style.left = x + 'px'
-  ripples.style.top = y + 'px'
-  ripples.style.position = 'absolute'
-  ripples.style.background = '#fff'
-  ripples.style.transform = 'translate(-50%, -50%)'
-  ripples.style.pointerEvents = 'none'
-  ripples.style.borderRadius = '50%'
-  ripples.style.animation = 'ripple 1s linear infinite'
-  e.currentTarget.appendChild(ripples)
-  setTimeout(() => {
-    ripples.remove()
-  }, 1000)
+function activateAnimationsFromList(list) {
+  list.forEach((item, i) => {
+    animationByEvent('' + item.className, '' + item.animationType, (e) => {
+      animationsImplementation['' + item.animationName](e)
+    })
+  })
+}
+
+var animationsImplementation = {
+  Ripple: function(e) {
+    e.currentTarget.style.overflow = 'hidden'
+    e.currentTarget.style.position = 'relative'
+    let rect = e.currentTarget.getBoundingClientRect()
+    let x = e.clientX - rect.x
+    let y = e.clientY - rect.y
+    let ripples = document.createElement('div')
+    ripples.style.left = x + 'px'
+    ripples.style.top = y + 'px'
+    ripples.style.position = 'absolute'
+    ripples.style.background = '#fff'
+    ripples.style.transform = 'translate(-50%, -50%)'
+    ripples.style.pointerEvents = 'none'
+    ripples.style.borderRadius = '50%'
+    ripples.style.animation = 'ripple 1s linear infinite'
+    e.currentTarget.appendChild(ripples)
+    setTimeout(() => {
+      ripples.remove()
+    }, 1000)
+  },
+  TestAnimation: function(e) {
+    e.currentTarget.animate([
+      // keyframes
+      { transform: 'translate3D(0, 0, 0)' },
+      { transform: 'translate3D(0, -300px, 0)' }
+    ], {
+      // timing options
+      duration: 1000,
+      iterations: Infinity
+    })
+  }
 }
 
 function animationByEvent(className, eventType, callback) {
@@ -125,19 +146,7 @@ function animationByEvent(className, eventType, callback) {
 
   })
 }
-
-// animationByEvent('.mihail', 'toggle', (e, state) => {
-//   if(state == 'toggled') {
-//     //e.currentTarget.style.background = 'red'
-//   }
-//   else {
-//     e.currentTarget.style.background = 'blue'
-//   }
-// })
-animationByEvent('.mihail', 'click', (e) => {
-  Ripple(e)
-})
-// animationByEvent('.mihail', 'windowscroll', (event, item) => {
-//   //console.log(item)
-//   item.style.color = 'red'
+activateAnimationsFromList(animationsList)
+// animationByEvent('.mihail', 'click', (e) => {
+//   animationsImplementation.TestAnimation(e)
 // })
