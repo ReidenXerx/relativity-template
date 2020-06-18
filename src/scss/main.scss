@@ -12,8 +12,8 @@
 @import "modifiers.scss";
 
 //animations
+@import "./animations/timing-functions.scss";
 @import "./animations/animations.scss";
-@import "./animations/animation-objects.scss";
 @import "./animations/handlers.scss";
 @import "./animations/animations-binds.scss";
 
