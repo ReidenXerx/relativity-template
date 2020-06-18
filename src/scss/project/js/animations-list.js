@@ -1,4 +1,4 @@
-require ('./animations/timing-functions.js')
+require ('../js/animations/timing-functions.js')
 
 var animationsList = [
 // {
@@ -11,6 +11,6 @@ var animationsList = [
     animationType: 'click',
     animationName: 'Ripple',
     animationTimingFunction: easeInSine,
-    animationDuration: 1s
+    animationDuration: 1
   }
 ]

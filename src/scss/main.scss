@@ -11,13 +11,6 @@
 @import "mixins.scss";
 @import "modifiers.scss";
 
-//animations
-@import "./animations/timing-functions.scss";
-@import "./animations/animations.scss";
-@import "./animations/handlers.scss";
-@import "./animations/animations-binds.scss";
-
-
 //presets
 @import "./presets/base.scss";
 @import "./presets/textbox.scss";
