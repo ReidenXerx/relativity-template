@@ -32,29 +32,16 @@
   // }
 //})
 
-var animationsList = [
-// {
-//   className: 'red',
-//   animationType: 'hover',
-//   animationName: 'blup'
-// },
-{
-  className: '.mihail',
-  animationType: 'click',
-  animationName: 'Ripple'
-}
-]
-
-function activateAnimationsFromList(list) {
+export let activateAnimationsFromList = (list) => {
   list.forEach((item, i) => {
     animationByEvent('' + item.className, '' + item.animationType, (e) => {
-      animationsImplementation['' + item.animationName](e)
+      animationsImplementation['' + item.animationName](e, item.animation, item.animationDuration)
     })
   })
 }
 
-var animationsImplementation = {
-  Ripple: function(e) {
+export var animationsImplementation = {
+  Ripple: function(e, animation, duration) {
     e.currentTarget.style.overflow = 'hidden'
     e.currentTarget.style.position = 'relative'
     let rect = e.currentTarget.getBoundingClientRect()
@@ -68,13 +55,13 @@ var animationsImplementation = {
     ripples.style.transform = 'translate(-50%, -50%)'
     ripples.style.pointerEvents = 'none'
     ripples.style.borderRadius = '50%'
-    ripples.style.animation = 'ripple 1s linear infinite'
+    ripples.animate(animation, duration)
     e.currentTarget.appendChild(ripples)
     setTimeout(() => {
       ripples.remove()
     }, 1000)
   },
-  TestAnimation: function(e) {
+  TestAnimation: function(e, animation, duration) {
     e.currentTarget.animate([
       // keyframes
       { transform: 'translate3D(0, 0, 0)' },
@@ -87,7 +74,7 @@ var animationsImplementation = {
   }
 }
 
-function animationByEvent(className, eventType, callback) {
+export let animationByEvent = (className, eventType, callback) => {
   var allObjects = document.querySelectorAll(className)
   allObjects.forEach(item => {
 
@@ -146,7 +133,3 @@ function animationByEvent(className, eventType, callback) {
 
   })
 }
-activateAnimationsFromList(animationsList)
-// animationByEvent('.mihail', 'click', (e) => {
-//   animationsImplementation.TestAnimation(e)
-// })

@@ -1,6 +1,4 @@
-require ('../js/animations/timing-functions.js')
-
-var animationsList = [
+export var list = [
 // {
 //   className: 'red',
 //   animationType: 'hover',
@@ -10,7 +8,7 @@ var animationsList = [
     className: '.mihail',
     animationType: 'click',
     animationName: 'Ripple',
-    animationTimingFunction: easeInSine,
+    animationTimingFunction: timingFunctions['easeInOutSine'],
     animationDuration: 1
   }
 ]
