@@ -6,7 +6,7 @@
 @import "./vars/devices.scss";
 
 
-@import "./project/_colors.scss";
+@import "./../project/_colors.scss";
 @import "functions.scss";
 @import "mixins.scss";
 @import "modifiers.scss";
@@ -22,4 +22,4 @@
 @import "./objects/sidebar.scss";
 
 //project
-@import "./project/index.scss";
+@import "./../project/index.scss";

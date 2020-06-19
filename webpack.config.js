@@ -22,7 +22,7 @@ const htmlPlugins = generateHtmlPlugins('./src/html');
 
 module.exports = {
   entry: [
-    './src/js/index.js',
+    './src/js/main.js',
     './src/scss/main.scss'
   ],
   output: {
