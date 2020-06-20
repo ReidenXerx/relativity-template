@@ -135,6 +135,7 @@ html, body {
 }
 
 #mihail-test {
+	height: 100vh;
 	.mihail {
 		display: flex;
 		justify-content: center;
@@ -151,11 +152,12 @@ html, body {
 }
 .mihail-droplist {
 	flex-direction: column;
+	width: 200px;
+	//height: 1000px;
 	.head, .item {
 		padding: 20px;
 		border: 1px solid black;
 		background: white;
-		width: 200px;
 		text-align: center;
 	}
 	.head {
