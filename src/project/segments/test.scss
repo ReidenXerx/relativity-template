@@ -149,3 +149,16 @@ html, body {
 	background: silver;
 	color: black;
 }
+.mihail-droplist {
+	flex-direction: column;
+	.head, .item {
+		padding: 20px;
+		border: 1px solid black;
+		background: white;
+		width: 200px;
+		text-align: center;
+	}
+	.head {
+		background: rgb(64, 92, 171);
+	}
+}
