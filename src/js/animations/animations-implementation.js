@@ -2,7 +2,7 @@
 полноценные реализации анимаций
 */
 export var animationsImplementation = {
-  Ripple: function(e, animation, duration) {
+  Ripple: function(e, options, styles) {
     e.currentTarget.style.overflow = 'hidden'
     e.currentTarget.style.position = 'relative'
     let rect = e.currentTarget.getBoundingClientRect()
@@ -16,21 +16,35 @@ export var animationsImplementation = {
     ripples.style.transform = 'translate(-50%, -50%)'
     ripples.style.pointerEvents = 'none'
     ripples.style.borderRadius = '50%'
-    ripples.animate(animation, duration)
+    ripples.animate([
+      {
+        width: '0px',
+        height: '0px',
+        opacity: 0.5
+      },
+      {
+        width: '500px',
+        height: '500px',
+        opacity: 0
+      }
+    ], options)
     e.currentTarget.appendChild(ripples)
     setTimeout(() => {
       ripples.remove()
     }, 1000)
   },
-  TestAnimation: function(e, animation, duration) {
+  TestAnimation: function(e, animation, options, styles) {
     e.currentTarget.animate([
       // keyframes
-      { transform: 'translate3D(0, 0, 0)' },
-      { transform: 'translate3D(0, -300px, 0)' }
-    ], {
-      // timing options
-      duration: 1000,
-      iterations: Infinity
-    })
+      { background: '#ff0000' },
+      { background: '#00ff00' }
+    ], options)
+  },
+  TestAnimation2: function(e, animation, options, styles) {
+    e.currentTarget.animate([
+      // keyframes
+      { background: '#000000' },
+      { background: '#ffffff' }
+    ], options)
   }
 }

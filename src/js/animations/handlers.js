@@ -37,10 +37,27 @@
 */
 import { animationsImplementation } from './animations-implementation.js'
 
+var easyAnimation = (e, animation, options, styles) => {
+  (typeof animation === 'object' && typeof options === 'object') && e.currentTarget.animate(animation, options)
+  if(typeof styles === 'object') {
+  var props = Object.keys(styles)
+  props.forEach((i) => {
+    e.currentTarget.style[i] = styles[i]
+  })
+  }
+}
+
 export let activateAnimationsFromList = (list) => {
   list.forEach((item, i) => {
-    animationByEvent('' + item.className, '' + item.animationType, (e) => {
-      animationsImplementation['' + item.animationName](e, item.animation, item.animationDuration)
+    animationByEvent('' + item.className, '' + item.animationType, (e, str) => {
+      var i
+      str === 'off' ? i = 1 : i = 0
+      if(typeof item.body[i].animationName === 'string' && item.body[i].animationName !== 'easyAnimation') {
+        animationsImplementation['' + item.body[i].animationName](e, item.body[i].animationProps, item.body[i].styles)
+      }
+      else {
+        easyAnimation(e, item.body[i].animation, item.body[i].animationProps, item.body[i].styles)
+      }
     })
   })
 }
@@ -52,10 +69,10 @@ export let animationByEvent = (className, eventType, callback) => {
     switch(eventType) {
       case 'hover':
       item.addEventListener('mouseover', (event) => {
-        callback(event, 'mouseover')
+        callback(event, 'on')
       })
       item.addEventListener('mouseout', (event) => {
-        callback(event, 'mouseout')
+        callback(event, 'off')
       })
       break;
 
@@ -69,11 +86,11 @@ export let animationByEvent = (className, eventType, callback) => {
       var toggler = false
       item.addEventListener('click', (event) => {
         if(!toggler) {
-          callback(event, 'toggled')
+          callback(event, 'on')
           toggler = true
         }
         else {
-          callback(event, 'untoggled')
+          callback(event, 'off')
           toggler = false
         }
       })

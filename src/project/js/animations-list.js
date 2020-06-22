@@ -6,9 +6,32 @@ export var list = [
   {
     className: '.mihail',
     animationType: 'click',
-    animationName: 'Ripple',
-    animationTimingFunction: timingFunctions['easeInOutSine'],
-    animation: animations.ripple,
-    animationDuration: 1000
+    body: [{
+      animationName: 'Ripple',
+      animationProps: {
+        duration: 1000,
+        easing: timingFunctions['easeInOutSine']
+      },
+      styles: {
+
+      }
+    }]
+  },
+  {
+    className: '.mihail',
+    animationType: 'hover',
+    body: [{
+      styles: {
+        background: '#000'
+      }
+    }, {
+      animationProps: {
+        duration: 1000,
+        easing: timingFunctions['easeInOutSine']
+      },
+      styles: {
+        background: '#2a2a2e'
+      }
+    }]
   }
 ]

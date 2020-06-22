@@ -23,7 +23,6 @@ export function CreateDroplist(object) {
     item.style.display = 'none'
     item.style.position = 'absolute'
     item.style.left = 0
-    console.log(i, item)
   })
   var hidden = true
 
