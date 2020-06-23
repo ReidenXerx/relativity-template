@@ -36,6 +36,7 @@
 реализация обработчиков добавления анимаций на элементы
 */
 import { animationsImplementation } from './animations-implementation.js'
+//import * as animations from './animations.js'
 
 var easyAnimation = (e, animation, options, styles) => {
   (typeof animation === 'object' && typeof options === 'object') && e.currentTarget.animate(animation, options)

@@ -1,4 +1,4 @@
-class blupAnimation {
+export class blupAnimation {
   constructor(borderRadiusS, borderRadiusE, backgroundColorE) {
     this.direct = [
 
@@ -25,12 +25,12 @@ class blupAnimation {
         offset: 0.01
       },
       {
-        background: transparent,
+        background: 'transparent',
         offset: 0.25
       },
       {
         borderRadius: borderRadiusS,
-        background: transparent
+        background: 'transparent'
       }
 
     ]
@@ -46,97 +46,97 @@ class blupAnimation {
   }
 }
 
-// class zoomAnimation {
-//   constructor(scaler) {
-//     this.direct = [
-//
-//       {
-//         -webkit-transform: scale(1 + (scaler - 1) * 0.5),
-//         -ms-transform: scale(1 + (scaler - 1) * 0.5),
-//         transform: scale(1 + (scaler - 1) * 0.5),
-//         offset: 0.25
-//       },
-//       {
-//         -webkit-transform: scale(scaler),
-//         -ms-transform: scale(scaler),
-//         transform: scale(scaler)
-//       }
-//
-//     ]
-//
-//     this.reverse = [
-//
-//       {
-//         -webkit-transform: scale(1 + (scaler - 1) * 0.5),
-//         -ms-transform: scale(1 + (scaler - 1) * 0.5),
-//         transform: scale(1 + (scaler - 1) * 0.5),
-//         offset: 0.25
-//       },
-//       {
-//         -webkit-transform: scale(scaler),
-//         -ms-transform: scale(scaler),
-//         transform: scale(scaler)
-//       }
-//
-//     ]
-//   }
-//
-//   getDirect() {
-//     return this.direct;
-//   }
-//
-//
-//   getReverse() {
-//     return this.direct;
-//   }
-// }
+export class zoomAnimation {
+  constructor(scaler) {
+    this.direct = [
 
-// class rotateAnimation {
-//   constructor(rotation) {
-//     this.direct = [
-//
-//       {
-//         -webkit-transform: rotateZ(0.5 * rotation * 1deg),
-//         -ms-transform: rotateZ(0.5 * rotation * 1deg),
-//         transform: rotateZ(0.5 * rotation * 1deg),
-//         offset: 0.25
-//       },
-//       {
-//         -webkit-transform: rotateZ(rotation * 1deg),
-//         -ms-transform: rotateZ(rotation * 1deg),
-//         transform: rotateZ(rotation * 1deg)
-//       }
-//
-//     ]
-//
-//     this.reverse = [
-//
-//       {
-//         -webkit-transform: rotateZ(0.5 * rotation * 1deg),
-//         -ms-transform: rotateZ(0.5 * rotation * 1deg),
-//         transform: rotateZ(0.5 * rotation * 1deg),
-//         offset: 0.25
-//       },
-//       {
-//         -webkit-transform: rotateZ(0deg),
-//         -ms-transform: rotateZ(0deg),
-//         transform: rotateZ(0deg)
-//       }
-//
-//     ]
-//   }
-//
-//   getDirect() {
-//     return this.direct;
-//   }
-//
-//
-//   getReverse() {
-//     return this.direct;
-//   }
-// }
+      {
+        //-webkit-transform: scale(1 + (scaler - 1) * 0.5),
+        //-ms-transform: scale(1 + (scaler - 1) * 0.5),
+        transform: 'scale('+ parseFloat(1 + (scaler - 1) * 0.5) +')',
+        offset: 0.25
+      },
+      {
+        //-webkit-transform: scale(scaler),
+        //-ms-transform: scale(scaler),
+        transform: 'scale('+ parseFloat(scaler) +')'
+      }
 
-// class zshadowAnimation {
+    ]
+
+    this.reverse = [
+
+      {
+        //-webkit-transform: scale(1 + (scaler - 1) * 0.5),
+        //-ms-transform: scale(1 + (scaler - 1) * 0.5),
+        transform: 'scale('+ parseFloat(1 + (scaler - 1) * 0.5) +')',
+        offset: 0.25
+      },
+      {
+        //-webkit-transform: scale(scaler),
+        //-ms-transform: scale(scaler),
+        transform: 'scale('+ parseFloat(scaler) +')'
+      }
+
+    ]
+  }
+
+  getDirect() {
+    return this.direct;
+  }
+
+
+  getReverse() {
+    return this.direct;
+  }
+}
+
+export class rotateAnimation {
+  constructor(rotation) {
+    this.direct = [
+
+      {
+        //-webkit-transform: rotateZ(0.5 * rotation * 1deg),
+        //-ms-transform: rotateZ(0.5 * rotation * 1deg),
+        transform: 'rotateZ('+ parseFloat(0.5 * rotation) + 'deg)',
+        offset: 0.25
+      },
+      {
+        //-webkit-transform: rotateZ(rotation * 1deg),
+        //-ms-transform: rotateZ(rotation * 1deg),
+        transform: 'rotateZ('+ rotation + 'deg)'
+      }
+
+    ]
+
+    this.reverse = [
+
+      {
+        //-webkit-transform: rotateZ(0.5 * rotation * 1deg),
+        //-ms-transform: rotateZ(0.5 * rotation * 1deg),
+        transform: 'rotateZ('+ parseFloat(0.5 * rotation) + 'deg)',
+        offset: 0.25
+      },
+      {
+        // -webkit-transform: rotateZ(0deg),
+        // -ms-transform: rotateZ(0deg),
+        transform: 'rotateZ(0deg)'
+      }
+
+    ]
+  }
+
+  getDirect() {
+    return this.direct;
+  }
+
+
+  getReverse() {
+    return this.direct;
+  }
+}
+
+// export class zshadowAnimation {
 //   constructor(translateX, direction, shadowRange, shadowColor) {
 //     var boxShadow = "";
 //     for (var i = 1; i < shadowRange + 1; i++) {
