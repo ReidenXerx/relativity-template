@@ -7,20 +7,20 @@ var zoom = new animations.zoomAnimation(2)
 var rotate = new animations.rotateAnimation(45)
 
 export var list = [
-  // {
-  //   className: '.mihail',
-  //   animationType: 'click',
-  //   body: [{
-  //     animationName: 'Ripple',
-  //     animationProps: {
-  //       duration: 1000,
-  //       easing: timingFunctions['easeInOutSine']
-  //     },
-  //     styles: {
-  //
-  //     }
-  //   }]
-  // },
+  {
+    className: '.mihail',
+    animationType: 'click',
+    body: [{
+      animationName: 'Ripple',
+      animationProps: {
+        duration: 1000,
+        easing: timingFunctions['easeInOutSine']
+      },
+      styles: {
+
+      }
+    }]
+  },
   // {
   //   className: '.mihail',
   //   animationType: 'hover',
@@ -39,10 +39,26 @@ export var list = [
   //   }]
   // },
   {
-    className: '.mihail',
+    className: '#m1',
     animationType: 'click',
     body: [{
       animation: rotate.getDirect(),
+      animationStopAtEnd: true,
+      animationProps: {
+        duration: 1000,
+        easing: timingFunctions['easeInOutSine']
+      },
+      styles: {
+        //background: '#000'
+      }
+    }]
+  },
+  {
+    className: '#m2',
+    animationType: 'click',
+    body: [{
+      animation: rotate.getDirect(),
+      //animationStopAtEnd: true,
       animationProps: {
         duration: 1000,
         easing: timingFunctions['easeInOutSine']
