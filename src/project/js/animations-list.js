@@ -5,6 +5,7 @@ import { timingFunctions } from './../../js/animations/timing-functions.js'
 var blup = new animations.blupAnimation('50%', '100%', '#d0d0d0')
 var zoom = new animations.zoomAnimation(2)
 var rotate = new animations.rotateAnimation(45)
+var test = new animations.testAnimation()
 
 export var list = [
   {
@@ -42,11 +43,11 @@ export var list = [
     className: '#m1',
     animationType: 'click',
     body: [{
-      animation: rotate.getDirect(),
+      animation: test.getDirect(),
       animationStopAtEnd: true,
       animationProps: {
         duration: 1000,
-        easing: timingFunctions['easeInOutSine']
+        easing: timingFunctions['easeOutQuart']
       },
       styles: {
         //background: '#000'
@@ -57,7 +58,22 @@ export var list = [
     className: '#m2',
     animationType: 'click',
     body: [{
-      animation: rotate.getDirect(),
+      animation: test.getDirect(),
+      //animationStopAtEnd: true,
+      animationProps: {
+        duration: 1000,
+        easing: timingFunctions['easeInOutSine']
+      },
+      styles: {
+        //background: '#000'
+      }
+    }]
+  },
+  {
+    className: '#m3',
+    animationType: 'click',
+    body: [{
+      animation: blup.getDirect(),
       //animationStopAtEnd: true,
       animationProps: {
         duration: 1000,

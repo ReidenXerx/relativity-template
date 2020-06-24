@@ -1,39 +1,17 @@
 export class blupAnimation {
   constructor(borderRadiusS, borderRadiusE, backgroundColorE) {
-    this.direct = [
 
-      {
-        borderRadius: borderRadiusS,
-        offset: 0.01
-      },
-      {
-        background: backgroundColorE,
-        offset: 0.25
-      },
-      {
-        borderRadius: borderRadiusE,
-        background: backgroundColorE
-      }
+    this.direct = {
+      borderRadius: [borderRadiusS, borderRadiusE],
+      offset: [0, 0.25, 1],
+      backgroundColor: ['transparent', backgroundColorE, backgroundColorE]
+    }
 
-    ]
-
-    this.reverse = [
-
-      {
-        borderRadius: borderRadiusE,
-        background: backgroundColorE,
-        offset: 0.01
-      },
-      {
-        background: 'transparent',
-        offset: 0.25
-      },
-      {
-        borderRadius: borderRadiusS,
-        background: 'transparent'
-      }
-
-    ]
+    this.reverse = {
+      borderRadius: [borderRadiusE, borderRadiusS],
+      offset: [0, 0.25, 1],
+      backgroundColor: [backgroundColorE, 'transparent', 'transparent']
+    }
   }
 
   getDirect() {
@@ -45,6 +23,8 @@ export class blupAnimation {
     return this.direct;
   }
 }
+
+// TODO: REWORK ANIMATIONS
 
 export class zoomAnimation {
   constructor(scaler) {
@@ -132,6 +112,20 @@ export class rotateAnimation {
 
 
   getReverse() {
+    return this.direct;
+  }
+}
+
+export class testAnimation {
+  constructor() {
+    this.direct = {
+      transform: ['rotateZ(0deg)', 'rotateZ(90deg)', 'rotateZ(-90deg)'],
+      offset: [0, 0.8, 1]
+    }
+
+  }
+
+  getDirect() {
     return this.direct;
   }
 }

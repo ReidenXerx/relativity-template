@@ -58,11 +58,23 @@ export let activateAnimationsFromList = (list) => {
       }
       else {
         if(item.body[i].animationStopAtEnd) {
-          var lastKeyframe = item.body[i].animation[item.body[i].animation.length - 1]
-          var keyframeKeys = Object.keys(lastKeyframe)
-          console.log(keyframeKeys)
+          // var lastKeyframe = item.body[i].animation[item.body[i].animation.length - 1]
+          // var keyframeKeys = Object.keys(lastKeyframe)
+          // console.log(keyframeKeys)
+          // keyframeKeys.forEach((key) => {
+          //   item.body[i].styles[key] = lastKeyframe[key]
+          // })
+          var keyframeKeys = Object.keys(item.body[i].animation)
+          console.log(item.body[i].animation)
           keyframeKeys.forEach((key) => {
-            item.body[i].styles[key] = lastKeyframe[key]
+            var keyArray = item.body[i].animation[key]
+            var last = keyArray[keyArray.length - 1]
+            if(key !== 'offset') {
+              item.body[i].styles[key] = last
+              console.log(last, key)
+            }
+
+
           })
         }
         easyAnimation(e, item.body[i].animation, item.body[i].animationProps, item.body[i].styles)
