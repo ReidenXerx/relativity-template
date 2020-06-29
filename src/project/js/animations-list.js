@@ -44,7 +44,8 @@ export var list = [
     animationType: 'click',
     body: [{
       animation: test.getDirect(),
-      animationStopAtEnd: true,
+      //animationStopAtEnd: true,
+      animationIterations: 3,
       animationProps: {
         duration: 1000,
         easing: timingFunctions['easeOutQuart']

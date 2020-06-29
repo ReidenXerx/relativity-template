@@ -49,29 +49,38 @@ var easyAnimation = (e, animation, options, styles) => {
 }
 
 export let activateAnimationsFromList = (list) => {
-  list.forEach((item, i) => {
+  list.forEach((item) => {
+
     animationByEvent('' + item.className, '' + item.animationType, (e, str) => {
+
       var i
       str === 'off' ? i = 1 : i = 0
-      if(typeof item.body[i].animationName === 'string' && item.body[i].animationName !== 'easyAnimation') {
+
+      if(!item.body[i].counter) item.body[i].counter = 0
+      //console.log(item.body[i].counter, item.body[i])
+      if(!isNaN(item.body[i].animationIterations) && item.body[i].counter >= item.body[i].animationIterations) {
+        return
+      }
+
+      if(typeof item.body[i].animationName === 'string' && item.body[i].animationName !== 'easyAnimation') { // если анимация сложная
         animationsImplementation['' + item.body[i].animationName](e, item.body[i].animationProps, item.body[i].styles)
       }
-      else {
-        if(item.body[i].animationStopAtEnd) {
+      else { // если простая
+        if(item.body[i].animationStopAtEnd) { // если надо, чтобы анимация замирала в конце
           // var lastKeyframe = item.body[i].animation[item.body[i].animation.length - 1]
           // var keyframeKeys = Object.keys(lastKeyframe)
           // console.log(keyframeKeys)
           // keyframeKeys.forEach((key) => {
           //   item.body[i].styles[key] = lastKeyframe[key]
-          // })
+          // }) // old realisation for old keyframes
           var keyframeKeys = Object.keys(item.body[i].animation)
-          console.log(item.body[i].animation)
+          //console.log(item.body[i].animation)
           keyframeKeys.forEach((key) => {
             var keyArray = item.body[i].animation[key]
             var last = keyArray[keyArray.length - 1]
             if(key !== 'offset') {
               item.body[i].styles[key] = last
-              console.log(last, key)
+              //console.log(last, key)
             }
 
 
@@ -79,8 +88,10 @@ export let activateAnimationsFromList = (list) => {
         }
         easyAnimation(e, item.body[i].animation, item.body[i].animationProps, item.body[i].styles)
       }
+      if(!isNaN(item.body[i].counter)) item.body[i].counter++
     })
   })
+  //console.log(list)
 }
 
 export let animationByEvent = (className, eventType, callback) => {
