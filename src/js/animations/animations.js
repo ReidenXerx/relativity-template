@@ -20,7 +20,7 @@ export class blupAnimation {
 
 
   getReverse() {
-    return this.direct;
+    return this.reverse;
   }
 }
 
@@ -28,37 +28,14 @@ export class blupAnimation {
 
 export class zoomAnimation {
   constructor(scaler) {
-    this.direct = [
-
-      {
-        //-webkit-transform: scale(1 + (scaler - 1) * 0.5),
-        //-ms-transform: scale(1 + (scaler - 1) * 0.5),
-        transform: 'scale('+ parseFloat(1 + (scaler - 1) * 0.5) +')',
-        offset: 0.25
-      },
-      {
-        //-webkit-transform: scale(scaler),
-        //-ms-transform: scale(scaler),
-        transform: 'scale('+ parseFloat(scaler) +')'
-      }
-
-    ]
-
-    this.reverse = [
-
-      {
-        //-webkit-transform: scale(1 + (scaler - 1) * 0.5),
-        //-ms-transform: scale(1 + (scaler - 1) * 0.5),
-        transform: 'scale('+ parseFloat(1 + (scaler - 1) * 0.5) +')',
-        offset: 0.25
-      },
-      {
-        //-webkit-transform: scale(scaler),
-        //-ms-transform: scale(scaler),
-        transform: 'scale('+ parseFloat(scaler) +')'
-      }
-
-    ]
+    this.direct = {
+      transform: ['scale('+ parseFloat(1 + (scaler - 1) * 0.5) +')', 'scale('+ parseFloat(scaler) +')'],
+      offset: [0.25, 1]
+    }
+    this.reverse = {
+      transform: ['scale('+ parseFloat(1 + (scaler - 1) * 0.5) +')', 'scale('+ 0 +')'],
+      offset: [0.25, 1]
+    }
   }
 
   getDirect() {
@@ -67,43 +44,22 @@ export class zoomAnimation {
 
 
   getReverse() {
-    return this.direct;
+    return this.reverse;
   }
 }
 
 export class rotateAnimation {
   constructor(rotation) {
-    this.direct = [
+    this.direct = {
+      transform: ['rotateZ('+ parseFloat(0.5 * rotation) + 'deg)', 'rotateZ('+ rotation + 'deg)'],
+      offset: [0.25, 1]
+    }
 
-      {
-        //-webkit-transform: rotateZ(0.5 * rotation * 1deg),
-        //-ms-transform: rotateZ(0.5 * rotation * 1deg),
-        transform: 'rotateZ('+ parseFloat(0.5 * rotation) + 'deg)',
-        offset: 0.25
-      },
-      {
-        //-webkit-transform: rotateZ(rotation * 1deg),
-        //-ms-transform: rotateZ(rotation * 1deg),
-        transform: 'rotateZ('+ rotation + 'deg)'
-      }
+    this.reverse = {
+      transform: ['rotateZ('+ parseFloat(0.5 * rotation) + 'deg)', 'rotateZ(0deg)'],
+      offset: [0.25, 1]
+    }
 
-    ]
-
-    this.reverse = [
-
-      {
-        //-webkit-transform: rotateZ(0.5 * rotation * 1deg),
-        //-ms-transform: rotateZ(0.5 * rotation * 1deg),
-        transform: 'rotateZ('+ parseFloat(0.5 * rotation) + 'deg)',
-        offset: 0.25
-      },
-      {
-        // -webkit-transform: rotateZ(0deg),
-        // -ms-transform: rotateZ(0deg),
-        transform: 'rotateZ(0deg)'
-      }
-
-    ]
   }
 
   getDirect() {
@@ -112,7 +68,7 @@ export class rotateAnimation {
 
 
   getReverse() {
-    return this.direct;
+    return this.reverse;
   }
 }
 

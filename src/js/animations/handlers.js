@@ -153,3 +153,10 @@ export let animationByEvent = (className, eventType, callback) => {
 
   })
 }
+
+
+var hamburger1 = document.querySelector('.hamburger-1');
+
+hamburger1.addEventListener('click', function(){
+  hamburger1.classList.toggle('open');
+})

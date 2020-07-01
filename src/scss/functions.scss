@@ -138,3 +138,31 @@
 		@return false;
 	}
 }
+
+
+//-colors
+/*
+@function darker($color, $amount) {
+	@return color.scale($color, $lightness: calc((-1) * $amount));
+}
+
+@function lighter($color, $amount) {
+	@return color.scale($color, $lightness: $amount);
+}
+
+@function desaturate($color, $amount) {
+	@return color.scale($color, $saturation: calc((-1) * $amount));
+}
+
+@function saturate($color, $amount) {
+	@return color.scale($color, $saturation: $amount);
+}
+
+@function opacity-plus($color, $amount) {
+	@return color.scale($color, $alpha: $amount);
+}
+
+@function opacity-minus($color, $amount) {
+	@return color.scale($color, $alpha: calc((-1) * $amount));
+}
+*/
