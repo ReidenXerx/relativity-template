@@ -1,45 +1,48 @@
-import jQuery from 'jquery';
+export var CreateHeader = (options) => {
+  var header = document.querySelector(options.className)
+  if(header === null) return
 
-export default function Header() {
+  if(options.enableClassSwap) { // опция включения смены классов при скролле
 
-  jQuery(document).ready(function() {
-
-    if(jQuery(document).width() <= 768) jQuery(".menu").hide();
-
-    if( jQuery(window).scrollTop() == 0) {
-      jQuery("header").addClass("trans");
+    if(document.documentElement.scrollTop == 0) {
+      header.classList.add(options.topClassName)
+      header.classList.remove(options.defaultClassName)
     }
     else {
-      jQuery(".header").addClass("blue");
+      header.classList.remove(options.topClassName)
+      header.classList.add(options.defaultClassName)
     }
+    document.addEventListener('scroll', () => {
 
-    jQuery("body").on("click","#list", function (event) { //scroll
-      event.preventDefault();
-      var idhref  = jQuery(this).attr('href'),
-      scrollto = jQuery(idhref).offset().top - 100;
-      jQuery('body,html').animate({scrollTop: scrollto}, 1500);
-    });
-
-    jQuery(window).scroll(function(event) { // header swap
-
-      if( jQuery(window).scrollTop() == 0) {
-        jQuery(".header").removeClass("blue");
-        jQuery(".header").addClass("trans");
+      if(document.documentElement.scrollTop == 0) {
+        header.classList.add(options.topClassName)
+        header.classList.remove(options.defaultClassName)
       }
       else {
-        jQuery(".header").removeClass("trans");
-        jQuery(".header").addClass("blue");
+        header.classList.remove(options.topClassName)
+        header.classList.add(options.defaultClassName)
       }
-    });
+    })
+  }
+  else {
+    header.classList.add(options.defaultClassName)
+  }
 
-    jQuery("ul").on("click", "a", function (event) {
-      if(jQuery(document).width() <= 768) jQuery(".menu").hide();
-    });
+  if(options.enableSmoothScroll) { // опция включения гладкого скролла
+    var links = document.querySelectorAll(options.linkClassName)
+    console.log(links)
+    links.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        event.preventDefault()
+        var idhref = e.currentTarget.getAttribute('href')
+        var scrollto = document.querySelector(idhref).offsetTop - 100
+        var scrollcur = document.documentElement.scrollTop
+        window.scroll({ top: scrollto, behavior: 'smooth' })
+      })
+    })
 
-    jQuery(".hamburger").on("click", function (event) {
-      jQuery(".menu").toggle();
-    });
 
-  });
+  }
+
 
 }

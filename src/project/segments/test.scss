@@ -146,6 +146,19 @@ html, body {
 		padding-left: 100px;
 	}
 }
+.mihail-header {
+	width: 100vw;
+	height: 80px;
+	position: fixed;
+	z-index: 99;
+
+}
+.red {
+	background: rgb(148, 13, 13);
+}
+.blue {
+	background: rgb(61, 115, 219);
+}
 .preloader-test {
 	background: silver;
 	color: black;
