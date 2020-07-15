@@ -162,6 +162,26 @@
 	visibility: visible;
 }
 
+//-font-weights
+
+.light {
+  font-weight: 100;
+}
+.regular {
+  font-weight: 400;
+}
+.medium {
+  font-weight: 500;
+}
+.semi-bold {
+  font-weight: 600;
+}
+.bold {
+  font-weight: 700;
+}
+.boldest {
+  font-weight: 900;
+}
 
 //-flex
 
@@ -300,11 +320,11 @@
 //-text
 
 .-text-r {
-	text-align: center;
+	text-align: right;
 }
 
 .-text-l {
-	text-align: center;
+	text-align: left;
 }
 
 .-text-c {
