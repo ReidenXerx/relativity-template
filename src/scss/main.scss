@@ -5,11 +5,8 @@
 @import "./vars/text.scss";
 @import "./vars/devices.scss";
 
-
-@import "./../project/_colors.scss";
 @import "functions.scss";
 @import "mixins.scss";
-@import "modifiers.scss";
 
 //presets
 @import "./presets/base.scss";
@@ -23,5 +20,8 @@
 @import "./objects/adaptive_header.scss";
 @import "./objects/sidebar.scss";
 
+@import "./../project/_colors.scss";
+@import "modifiers.scss";
+
 //project
-@import "./../project/index.scss";
+//@import "./../project/index.scss";

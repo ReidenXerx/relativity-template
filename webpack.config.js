@@ -23,7 +23,7 @@ const htmlPlugins = generateHtmlPlugins('./src/html');
 module.exports = {
   entry: [
     './src/js/main.js',
-    './src/scss/main.scss'
+    './src/project/index.scss'
   ],
   output: {
     filename: './js/bundle.js'
@@ -43,7 +43,7 @@ module.exports = {
       },
       {
         test: /\.(sass|scss)$/,
-        include: path.resolve(__dirname, 'src/scss'),
+        include: path.resolve(__dirname, 'src/project'),
         use: ExtractTextPlugin.extract({
           use: [{
               loader: "css-loader",
